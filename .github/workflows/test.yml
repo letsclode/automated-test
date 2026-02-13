@@ -10,15 +10,15 @@ jobs:
   test:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:focal
+      image: mcr.microsoft.com/playwright:v1.58.2-focal
     steps:
       - uses: actions/checkout@v3
       - name: Install Dependencies
         run: npm install
       - name: Run Tests
         env:
-          BASE_URL_BRANDA: ${{ secrets.BASE_URL_BRANDA }}
-          API_URL_BRANDA: ${{ secrets.API_URL_BRANDA }}
+          BASE_URL_BRANDA: ${{ vars.BASE_URL_BRANDA }}
+          API_URL_BRANDA: ${{ vars.API_URL_BRANDA }}
         run: npx playwright test
       - name: Upload HTML Report
         uses: actions/upload-artifact@v4
