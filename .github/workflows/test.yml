@@ -16,6 +16,9 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Run Tests
+        env:
+          BASE_URL_BRANDA: ${{ secrets.BASE_URL_BRANDA }}
+          API_URL_BRANDA: ${{ secrets.API_URL_BRANDA }}
         run: npx playwright test
       - name: Upload HTML Report
         uses: actions/upload-artifact@v4
